@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 from .models import *
 from .forms import *
@@ -22,9 +23,16 @@ def portfolio_detail_view(request, slug):
 
 
 def gallery_view(request):
-    images = PortfolioImage.objects.all()
-    form = BookingForm() 
+    images_list = PortfolioImage.objects.all().order_by('id')
+    paginator = Paginator(images_list, 20)  # Show 20 images per page
+
+    # Get the current page number from the query parameters
+    page_number = request.GET.get('page')
+    images = paginator.get_page(page_number)
+
+    form = BookingForm()
     return render(request, 'gallery.html', {'images': images, 'form': form})
+
 
 def booking_view(request):
     if request.method == 'POST':

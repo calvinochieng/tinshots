@@ -10,6 +10,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1', cast=Csv())
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -18,7 +19,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Local
-    'app'
+    'app',
+    'cloudinary_storage',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -92,11 +95,23 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = BASE_DIR / 'media'  # Directory to store media files
 MEDIA_URL = '/media/'
 
-# Whitenoise Caching
-WHITENOISE_STATIC_PREFIX = '/static/'
-WHITENOISE_MEDIA_PREFIX = '/media/'
 
+if not DEBUG:    
+    # Whitenoise Caching
 
-# Use WhiteNoise's storage backend for compressed files
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    WHITENOISE_STATIC_PREFIX = STATIC_URL  # Prefix for static files
+    # WHITENOISE_MEDIA_PREFIX = MEDIA_URL    # Prefix for media files
+
+    CLOUDINARY_STORAGE = {
+            'CLOUD_NAME': config('CLOUD_NAME'),
+            'API_KEY': config('API_KEY'),
+            'API_SECRET': config('API_SECRET'),
+            'MEDIA_TAG': config('MEDIA_TAG'),
+            'FOLDER': config('FOLDER'),
+        }
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+        # Use WhiteNoise's storage backend for compressed files
+    
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    WHITENOISE_MAX_AGE = 31536000  # 1 year for static files
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

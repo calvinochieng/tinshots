@@ -58,6 +58,14 @@
     margin: auto;
     max-width: 600px;
 }
+/* Pagination */
+.pagination a{
+    border-radius: 2px;
+}
+.pagination-link.is-current{
+    background-color: #f14668!important;
+    border-color: #f14668;
+}
 
 </style>
 <!-- <script src="{% static 'app/js/fslightbox.js' %}"></script> -->
@@ -90,6 +98,30 @@
             {% endfor %}
 
         </div>
+        <!-- Pagination -->
+        <nav class="pagination is-centered mt-5" role="navigation" aria-label="pagination">
+            {% if images.has_previous %}
+            <a class="pagination-previous" href="?page={{ images.previous_page_number }}">Previous</a>
+            {% else %}
+            <a class="pagination-previous" disabled>Previous</a>
+            {% endif %}
+
+            {% if images.has_next %}
+            <a class="pagination-next" href="?page={{ images.next_page_number }}">Next</a>
+            {% else %}
+            <a class="pagination-next" disabled>Next</a>
+            {% endif %}
+
+            <ul class="pagination-list">
+                {% for num in images.paginator.page_range %}
+                <li>
+                    <a class="pagination-link {% if num == images.number %}is-current{% endif %}" href="?page={{ num }}">
+                        {{ num }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
     </div>
 
 </section>

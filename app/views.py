@@ -23,7 +23,8 @@ def portfolio_detail_view(request, slug):
 
 def gallery_view(request):
     images = PortfolioImage.objects.all()
-    return render(request, 'gallery.html', {'images': images})
+    form = BookingForm() 
+    return render(request, 'gallery.html', {'images': images, 'form': form})
 
 def booking_view(request):
     if request.method == 'POST':

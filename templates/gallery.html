@@ -45,6 +45,19 @@
     opacity: 0.9;
 }
 
+/* Bookings  */
+#bookings{
+    background-image: url(/static/app/images/background.jpg);
+    background-color: #424448;
+}
+#bookings .box{
+    background-color: #ffffff83;
+    border-radius: 2px !important;
+}
+.gallery-description{
+    margin: auto;
+    max-width: 600px;
+}
 
 </style>
 <!-- <script src="{% static 'app/js/fslightbox.js' %}"></script> -->
@@ -55,20 +68,108 @@
 {% endblock custom_styles %}
 
 {% block content %}
-<div class="container mt-5 p-3">
-    <h1 class="title has-text-centered">Gallery</h1>
-    <div class="gallery-grid">
-        
-        {% for image in images %}
-        <div class="gallery-item">
-            <a href="{{ image.image.url }}" data-fslightbox="gallery">
-                <img src="{{ image.image.url }}" alt="{{ image.title }}" class="gallery-image">
-            </a>
+<section class="section">
+    <div class="container">
+        <h1 class="title has-text-centered">Gallery</h1>
+        <div class="has-text-centered mb-5">
+            <p class="subtitle has-text-centered gallery-description">
+                Welcome to our photography gallery! Explore our work and book your session today to create unforgettable memories. 
+                <br>
+                <a href="#bookings" class="button is-danger is-large mt-4">Book Now</a>
+            </p>
         </div>
-        {% endfor %}
 
+        <div class="gallery-grid">
+            
+            {% for image in images %}
+            <div class="gallery-item">
+                <a href="{{ image.image.url }}" data-fslightbox="gallery">
+                    <img src="{{ image.image.url }}" alt="{{ image.title }}" class="gallery-image">
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
     </div>
-</div>
+
+</section>
+<!-- Bookings -->
+<section class="section" id="bookings">
+    <div class="container">
+        <h2 class="title is-3 has-text-centered mb-6 has-text-white">Book Your Session</h2>
+        <div class="columns is-vcentered">
+            <!-- Left Column: Studio Image -->
+            <div class="column is-half">
+                <figure class="image">
+                    <img class="is-rounded" src="/static/app/images/book-session.jpg" alt="Tinshots Photography Studio Session Booking">
+                </figure>
+            </div>
+
+            <!-- Right Column: Booking Form -->
+            <div class="column is-half">
+                <div class="box">
+                    <form method="post" action="{% url 'bookings' %}">
+                        {% csrf_token %}
+                        <div class="field">
+                            <label class="label">Shoot Type</label>
+                            <div class="control">
+                                {{ form.shoot_type }}
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Full Name</label>
+                            <div class="control">
+                                {{ form.full_name }}
+                            </div>
+                        </div>
+                        
+                        <div class="columns">
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label">Email</label>
+                                    <div class="control">
+                                        {{ form.email }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label">Phone</label>
+                                    <div class="control">
+                                        {{ form.phone }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label">Date</label>
+                                    <div class="control">
+                                        {{ form.date }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label">Time</label>
+                                    <div class="control">
+                                        {{ form.time }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-primary is-fullwidth is-danger"  type="submit">Submit Booking</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
 
 

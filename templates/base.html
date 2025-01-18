@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>{% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="TinShots">
+
+    <title>
+        TinShots Photography - {% block title %} {% endblock title %}
+    </title>     
+
+    <meta name="description" content="{% block description %}{% endblock description %}">       
+    <link rel="shortcut icon" href="{% static 'app/images/icons/favicon.png' %}" type="image/x-icon">
+
+    <!-- Font and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous" />
+
+    <!-- Bulma and Custom Styles -->
+    <link rel="stylesheet" href="{% static 'app/bulma/css/bulma.min.css' %}">
+    <link rel="stylesheet" href="{% static 'app/style.css' %}">
+    <style>
+        
+        :root {
+            --primary-color: #3273dc;
+            --secondary-color: #c1c1c1;
+            --background-color: #091012de;;
+            --text-color: #d7d7d7;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+        body {
+            font-family: 'Inter' ,'Montserrat', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .messages{
+            padding: 1rem;
+            width: 100%;
+            z-index: 100;
+            position: absolute;
+        }
+        .notification{
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        #cancel{
+            position: absolute;
+            cursor: pointer;
+            right: .75rem;
+            top: 1.29rem;
+        }
+        .navbar-brand .name {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo{
+            width: 66px;
+            height: auto;
+            max-width: 100% !important;
+        }
+        .navbar-item{
+            text-transform: uppercase;
+        }
+        .logo img{
+            width: 11rem !important;
+            margin-left: -1.5rem;
+        }
+        .button-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 2px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .button-outline {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .button-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 2rem;
+        }
+
+        /* WhatsApp Icon Float Style */
+        .float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        /* WhatsApp Message Area Style */
+        .whatsapp-message-area {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            background: white;
+            border: 1px solid #ccc;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .message-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        .button {
+            align-self: flex-end;
+        }
+
+
+        .footer a {
+            color: #aeaeae;
+        }
+        footer .title{
+            font-size: 1.5rem !important;
+            color: white
+        }
+        @media (max-width: 320px) {
+            nav.two {
+            margin-top:-1rem !important;
+            }
+            .logo {
+                min-height: auto;
+            }
+        }
+
+    </style>
+    {% block custom_styles %}{% endblock custom_styles %}
+</head>
+
+<body>
+    <nav class="navbar has-background-light hide">
+        <div class="container">
+            <div class="navbar-brand">
+                <a href="/" class="navbar-item">
+                    <img class="logo" src="{% static 'app/images/icons/logo.png' %}" alt="Logo">
+                </a>
+                <div class="navbar-burger" data-target="navMenu">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div id="navMenu" class="navbar-menu is-right">
+                <div class="navbar-end">
+                    <a class="navbar-item" href="/#portforlio">My Work</a>
+                    <a class="navbar-item" href="/#about">About Me</a>
+                    <a class="navbar-item" href="/#contact">Contact</a>
+                    <a href="https://www.instagram.com/tin_shots_photography/profilecard/?igsh=emV5YjhodHgzeTQ0" class="navbar-item"><span class="icon is-medium"><i class="fab fa-instagram"></i></span></a>
+                    <a href="https://www.facebook.com/profile.php?id=61550788930385&mibextid=ZbWKwL" class="navbar-item"><span class="icon is-medium"><i class="fab fa-facebook"></i></span></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="notification is-{{ message.tags }}">
+                {{ message }}
+                <span id="cancel" class="icon has-text-black" style="cursor: pointer;">
+                    <i class="fa fa-times"></i> <!-- Close icon -->
+                </span>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <main>
+        {% block content %}{% endblock content %}
+    </main>
+    <!-- Floating WhatsApp Icon -->
+    <div class="float">
+        <span class="icon has-text-success" id="whatsapp-icon" style="cursor: pointer;">
+            <i class="fa-brands fa-3x fa-square-whatsapp"></i>
+        </span>
+    </div>
+
+    <!-- Hidden WhatsApp Message Area -->
+    <div class="whatsapp-message-area" id="message-area" style="display: none;">
+        <label for="whatsapp-message" class="label">Write your message here...</label>
+        <div class="message-container">
+            <textarea id="whatsapp-message" class="textarea" placeholder="Write your message here...">Hello, Martin ...</textarea>
+            <button class="button is-success mt-2" id="send-button">Send
+                <span class="icon pl-4"><i class="fa fa-paper-plane"></i></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title has-text-white">TinShots Photography</h2>
+                    <p>Capturing your precious moments with a touch of magic.</p>
+                    
+                    <div class="button-group mt-5">
+                        <a href="/bookings/#bookings" class="button is-danger is-normal">Book Now</a>
+                        <a href="#portforlio" class="button button-outline is-normal">View Gallery</a>
+                    </div>
+                </div>
+                <div class="column">
+                    <h4 class="title has-text-white">Quick Links</h4>
+                    <ul>
+                        <li><a href="/#portforlio">My Work / Portfolio</a></li>
+                        <li><a href="/#testimonials">Testimonials</a></li>
+                        <li><a href="/#about">About Me</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                        <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h4 class="title has-text-white">Follow Me</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61550788930385&mibextid=ZbWKwL" class="icon is-medium"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61550788930385&mibextid=ZbWKwL" class="icon is-medium"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="content has-text-centered">
+                <p>&copy; <span id="year"></span> TinShots Photography. All rights reserved.</p>
+                <script>
+                    document.getElementById("year").textContent = new Date().getFullYear();
+                </script>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{% static 'app/js/control.js' %}"></script>
+    <script>
+        // Select the cancel button
+        const cancel = document.querySelector('#cancel');
+        const messageContainer = document.querySelector('.messages');
+        
+        // Timer to automatically remove the message after 5 seconds
+        let autoRemoveTimer = setTimeout(() => {
+            if (messageContainer) {
+                messageContainer.style.display = 'none';
+            }
+        }, 5000); // 5000ms = 5 seconds
+
+        // Function to manually remove the message
+        const removeMessage = () => {
+            if (messageContainer) {
+                messageContainer.style.display = 'none';
+            }
+            clearTimeout(autoRemoveTimer); // Clear the timer to prevent conflicts
+        };
+
+        if (cancel){ cancel.addEventListener('click', removeMessage);}
+    </script>
+    <!-- WhatsApp Messaging Script -->  
+    <script>
+        // Get elements
+        const whatsappIcon = document.getElementById('whatsapp-icon');
+        const messageArea = document.getElementById('message-area');
+        const sendButton = document.getElementById('send-button');
+        const messageInput = document.getElementById('whatsapp-message');
+
+        // Toggle message area visibility
+        whatsappIcon.addEventListener('click', () => {
+            // Toggle the display of the message area
+            if (messageArea.style.display === 'none') {
+                messageArea.style.display = 'block';
+            } else {
+                messageArea.style.display = 'none';
+            }
+        });
+
+        // Handle the Send button click
+        sendButton.addEventListener('click', () => {
+            const message = messageInput.value.trim();
+            if (message) {
+                // Construct the WhatsApp URL
+                const phoneNumber = 'YOUR_PHONE_NUMBER'; // Replace with the target phone number
+                const whatsappURL = `https://wa.me/${254794156382}?text=${encodeURIComponent(message)}`;
+
+                // Open the WhatsApp URL in a new tab
+                window.open(whatsappURL, '_blank');
+
+                // Clear the message input and hide the message area
+                messageInput.value = '';
+                messageArea.style.display = 'none';
+            } else {
+                alert('Please write a message before sending.');
+            }
+        });
+    </script>
+    {% block custom_scripts %}{% endblock custom_scripts %}
+</body>
+</html>

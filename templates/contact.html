@@ -1,0 +1,35 @@
+<section class="section is-flex is-align-items-center is-justify-content-center" style="height: 100vh;">
+    <div class="box" style="max-width: 500px; width: 100%;">
+        <h2 class="title has-text-centered">Contact Us</h2>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="field">
+                {{ form.name.label_tag }}
+                <div class="control">
+                    {{ form.name }}
+                </div>
+            </div>
+            <div class="field">
+                {{ form.email.label_tag }}
+                <div class="control">
+                    {{ form.email }}
+                </div>
+            </div>
+            <div class="field">
+                {{ form.phone.label_tag }}
+                <div class="control">
+                    {{ form.phone }}
+                </div>
+            </div>
+            <div class="field">
+                {{ form.message.label_tag }}
+                <div class="control">
+                    {{ form.message }}
+                </div>
+            </div>
+            <div class="field">
+                <button type="submit" class="button is-primary is-fullwidth">Send Message</button>
+            </div>
+        </form>
+    </div>
+</section>

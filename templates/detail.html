@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ item.name }}
+{% endblock title %}
+
+{% block description %}
+    {{ item.description }}
+{% endblock description %}
+
+{% block custom_styles %}
+    <style>
+/* Gallery Grid Container */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 10px; /* Space between items */
+}
+
+/* Gallery Item */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Gallery Image */
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image fills its container without distortion */
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-image {
+    opacity: 0.9;
+}
+/* POrtfolio Image  */
+.portfolio-image{
+    border-radius: 2px;
+    width: 65%; max-width: 600px; min-width: 200px;
+    margin: 0 auto;
+}
+
+.button-outline {
+    background-color: transparent;
+    color: #383838;
+    border: 2px solid var(--primary-color);
+}
+/* Bookings  */
+#bookings{
+    background-image: url(/static/app/images/background.jpg);
+    background-color: #424448;
+}
+#bookings .box{
+    background-color: #ffffff83;
+    border-radius: 2px !important;
+}
+@media screen and (max-width: 576px) {
+
+    .button-group {
+        flex-direction: column;
+    }
+}
+
+    </style>
+{% endblock custom_styles %}
+
+{% block content %}
+
+
+<section class="section">
+    <div class="container">
+        <h2 class="title has-text-centered">{{portfolio.title}}</h2>
+        <div class=" columns is-vcentered">
+            <div class="column is-half">
+                <figure class="image portfolio">
+                    <img class="portfolio-image" src="{{ portfolio.cover_image.url }}" alt="{{ portfolio.title }}">
+                </figure>
+            </div>
+            <div class="column is-half">
+                <p class="subtitle has-text-centered">
+                    {{portfolio.description}}
+                </p>
+                <div class="button-group mt-5">
+                    <a href="#bookings" class="button is-danger is-large">Book Now</a>
+                    <a href="{% url 'gallery' %}" class="button button-outline is-large">View Gallery</a>
+                </div>
+            </div>            
+        </div>
+
+        <div class="gallery-grid">
+            
+            {% for image in images %}
+            <div class="gallery-item">
+                <a href="{{ image.image.url }}" data-fslightbox="gallery">
+                    <img src="{{ image.image.url }}" alt="{{ image.title }}" class="gallery-image">
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- Bookings -->
+<section class="section" id="bookings">
+    <div class="container">
+        <h2 class="title is-3 has-text-centered mb-6 has-text-white">Book Your Session</h2>
+        <div class="columns is-vcentered">
+            <!-- Left Column: Studio Image -->
+            <div class="column is-half">
+                <figure class="image">
+                    <img class="is-rounded" src="/static/app/images/book-session.jpg" alt="Tinshots Photography Studio Session Booking">
+                </figure>
+            </div>
+
+            <!-- Right Column: Booking Form -->
+            <div class="column is-half">
+                <div class="box">
+                    <form method="post" action="{% url 'bookings' %}">
+                        {% csrf_token %}
+                        <div class="field">
+                            <label class="label">Shoot Type</label>
+                            <div class="control">
+                                {{ form.shoot_type }}
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Full Name</label>
+                            <div class="control">
+                                {{ form.full_name }}
+                            </div>
+                        </div>
+                        
+                        <div class="columns">
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label">Email</label>
+                                    <div class="control">
+                                        {{ form.email }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label">Phone</label>
+                                    <div class="control">
+                                        {{ form.phone }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label">Date</label>
+                                    <div class="control">
+                                        {{ form.date }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label">Time</label>
+                                    <div class="control">
+                                        {{ form.time }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-primary is-fullwidth is-danger"  type="submit">Submit Booking</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block script %}
+<!-- Add any JavaScript here if needed -->
+{% endblock script %}

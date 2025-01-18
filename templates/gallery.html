@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Gallery
+{% endblock title %}
+
+{% block description %}
+    Here is the collection of my work -  please enjoy
+{% endblock description %}
+
+{% block custom_styles %}
+<style>
+    /* Gallery Grid Container */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 10px; /* Space between items */
+}
+
+/* Gallery Item */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Gallery Image */
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image fills its container without distortion */
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-image {
+    opacity: 0.9;
+}
+
+
+</style>
+<!-- <script src="{% static 'app/js/fslightbox.js' %}"></script> -->
+<script src="{% static 'app/js/fslightbox.js' %}" defer></script>
+<!-- Alternatively, use the CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.min.js"></script>
+
+{% endblock custom_styles %}
+
+{% block content %}
+<div class="container mt-5 p-3">
+    <h1 class="title has-text-centered">Gallery</h1>
+    <div class="gallery-grid">
+        
+        {% for image in images %}
+        <div class="gallery-item">
+            <a href="{{ image.image.url }}" data-fslightbox="gallery">
+                <img src="{{ image.image.url }}" alt="{{ image.title }}" class="gallery-image">
+            </a>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+{% block script %}
+<!-- Add any JavaScript here if needed -->
+{% endblock script %}

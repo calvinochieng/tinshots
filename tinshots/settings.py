@@ -99,8 +99,7 @@ MEDIA_URL = '/media/'
 if not DEBUG:    
     # Whitenoise Caching
 
-    WHITENOISE_STATIC_PREFIX = STATIC_URL  # Prefix for static files
-    # WHITENOISE_MEDIA_PREFIX = MEDIA_URL    # Prefix for media files
+    WHITENOISE_STATIC_PREFIX = STATIC_URL
 
     CLOUDINARY_STORAGE = {
             'CLOUD_NAME': config('CLOUD_NAME'),

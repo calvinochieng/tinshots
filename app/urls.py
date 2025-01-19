@@ -7,6 +7,7 @@ from app.views import *
 
 urlpatterns = [
     path('', index, name="index"),
+    path('pricing', pricing, name = "pricing"),
     path('gallery/', gallery_view, name='gallery'),
     path('bookings/', booking_view, name='bookings'),
     path("portforlio/", portfolio, name="portforlio"), 

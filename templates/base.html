@@ -146,6 +146,40 @@
         .footer a {
             color: #aeaeae;
         }
+        /* Contact and Bookings Additions */
+        
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 600px; /* Adjust width as needed */
+        }
+
+        .contact-buttons a {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            text-decoration: none;
+            background: #fff;
+            padding: 0.8rem 1rem;
+            border-radius: 2px;
+            border: 1px solid #3273dc37;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            font-family: Arial, sans-serif;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .contact-buttons a:hover {
+            background-color: #3273dc37;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-buttons .icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+            color: #3273dc; /* Icon color */
+        }
         footer .title{
             font-size: 1.5rem !important;
             color: white
@@ -177,6 +211,7 @@
             <div id="navMenu" class="navbar-menu is-right">
                 <div class="navbar-end">
                     <a class="navbar-item" href="/#portforlio">My Work</a>
+                    <a href="{% url 'pricing' %}" class="navbar-item">Pricing</a>
                     <a class="navbar-item" href="/#about">About Me</a>
                     <a class="navbar-item" href="/#contact">Contact</a>
                     <a href="https://www.instagram.com/tin_shots_photography/profilecard/?igsh=emV5YjhodHgzeTQ0" class="navbar-item"><span class="icon is-medium"><i class="fab fa-instagram"></i></span></a>
@@ -229,13 +264,14 @@
                     
                     <div class="button-group mt-5">
                         <a href="/bookings/#bookings" class="button is-danger is-normal">Book Now</a>
-                        <a href="#portforlio" class="button button-outline is-normal">View Gallery</a>
+                        <a href="https://wa.me/c/254794156382" class="button button-outline is-normal">View Catalogue</a>
                     </div>
                 </div>
                 <div class="column">
                     <h4 class="title has-text-white">Quick Links</h4>
                     <ul>
                         <li><a href="/#portforlio">My Work / Portfolio</a></li>
+                        <li><a href="{% url 'pricing' %}">Pricing</a></li>
                         <li><a href="/#testimonials">Testimonials</a></li>
                         <li><a href="/#about">About Me</a></li>
                         <li><a href="/#contact">Contact</a></li>

@@ -43,7 +43,28 @@
             <!-- Right Column: Booking Form -->
             <div class="column is-half">
                 <div class="box">
-                    <form method="post">
+                    <div class="contact-buttons mb-5">
+                        <a href="https://wa.me/c/254794156382" class="button is-medium">                        
+                            <span class="icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </span>
+                            <span>Book Via WhatsApp</span>
+                        </a>
+                        <a href="tel:+254794156382" class="button is-medium">                        
+                            <span class="icon">
+                                <i class="fas fa-phone"></i>
+                            </span>
+                            <span>Book Via Call</span>
+                        </a>
+                        <a href="mailto:tinshotsphotography@gmail.com" class="button is-medium">                        
+                            <span class="icon">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span>Book Via Email</span>
+                        </a>
+                    </div>
+                    <span>OR Manually</span>
+                    <form method="POST"  class="mt-4">
                         {% csrf_token %}
                         <div class="field">
                             <label class="label">Shoot Type</label>

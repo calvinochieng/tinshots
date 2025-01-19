@@ -94,6 +94,13 @@ nav.navbar{
     margin-bottom: 1.25rem;
     line-height: 1.2;
 }
+.gradient-text {
+            font-weight: bold;
+            background: linear-gradient(90deg, #3273dc, #f14668);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
 
 .hero-text .subtitle {
     font-size: 1rem;
@@ -281,7 +288,7 @@ nav.navbar{
         }
     }
 </style>
-
+<!-- For Bookings -->
 <!-- Include Flatpickr -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -330,16 +337,16 @@ nav.navbar{
                 </div>
             </nav>
             <div class="is-flex is-align-item-center is-flex-direction-column">                
-                <p class="greeting is-link">Hello, I'm</p>
-                <h1>Edward Martin</h1>
+                <p class="greeting is-link">Welcome To</p>
+                <h1>Tinshots Photography</h1>
                 <p class="subtitle">
-                    A professional photographer dedicated to transforming fleeting moments 
-                    into everlasting visual stories. With an artistic eye and technical precision, 
-                    I capture the essence of your most cherished experiences.
+                    Tinshots Photography is  modern solution to your picture civerage problems, we offer the best in terms of service delivery and high quality as well.
+                    <br>
+                    <strong class="gradient-text">Lets Get You A Return Ticket To Moments Otherwise Gone</strong>
                 </p>
                 <div class="button-group">
                     <a href="#bookings" class="button is-danger is-large">Book Now</a>
-                    <a href="#portforlio" class="button button-outline is-large">See My Work</a>
+                    <a href="https://wa.me/c/254794156382" class="button button-outline is-large">View Catalogue</a>
                 </div>
             </div>
         </div>
@@ -401,7 +408,7 @@ nav.navbar{
         <!-- Load More Button -->
         <div class="has-text-centered mt-5">
             <a href="{% url 'gallery' %}">
-                <button class="button is-link is-large" >View Catalogue</button>
+                <button class="button is-link is-large" >View Entire Gallery</button>
             </a>
         </div>
     </div>
@@ -486,7 +493,28 @@ nav.navbar{
             <!-- Right Column: Booking Form -->
             <div class="column is-half">
                 <div class="box">
-                    <form method="post" action="{% url 'bookings' %}">
+                    <div class="contact-buttons mb-5">
+                        <a href="https://wa.me/c/254794156382" class="button is-medium">                        
+                            <span class="icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </span>
+                            <span>Book Via WhatsApp</span>
+                        </a>
+                        <a href="tel:+254794156382" class="button is-medium">                        
+                            <span class="icon">
+                                <i class="fas fa-phone"></i>
+                            </span>
+                            <span>Book Via Call</span>
+                        </a>
+                        <a href="mailto:tinshotsphotography@gmail.com" class="button is-medium">                        
+                            <span class="icon">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span>Book Via Email</span>
+                        </a>
+                    </div>
+                    <span>OR Manually</span>
+                    <form method="POST"  class="mt-4" action="{% url 'bookings' %}">
                         {% csrf_token %}
                         <div class="field">
                             <label class="label">Shoot Type</label>
@@ -561,7 +589,7 @@ nav.navbar{
                 <span class="faq-icon">+</span>
             </h4>
             <p class="faq-answer" style="display: none;">
-                I’m Edward Martin, a passionate professional photographer dedicated to capturing life’s special moments. Whether it’s a grand event or an intimate family session, my goal is to deliver stunning photos that you’ll cherish forever. My style combines creativity, attention to detail, and a commitment to exceeding your expectations.
+                I’m Martin Edwards , a passionate professional photographer dedicated to capturing life’s special moments. Whether it’s a grand event or an intimate family session, my goal is to deliver stunning photos that you’ll cherish forever. My style combines creativity, attention to detail, and a commitment to exceeding your expectations.
             </p>
         </div>
         
@@ -636,8 +664,9 @@ nav.navbar{
             <div class="column is-half">
                 <div class="content">
                     <p> 
-                        <span class="subtitle is-4"><b>Edward Martin</b></span> <br>
+                        <span class="subtitle is-4"><b>Martin Edwards</b></span> <br>
                         <span><small>Professional Photographer</small></span> <br>
+                        <strong>Tinshots Photography</strong> <br>
                         <span>
                             <a href="#" aria-label="Facebook">
                                 <span class="icon">
@@ -674,7 +703,28 @@ nav.navbar{
             <div class="column is-half">
                 <div class="box" style="max-width: 600px; width: 100%;">
                     <h2 class="subtitle has-text-centered">Leave Us A Message</h2>
-                    <form method="POST" action="{% url 'contact' %}">
+                    <div class="contact-buttons mb-5">
+                        <a href="https://wa.me/c/254794156382" class="button is-medium">                        
+                            <span class="icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </span>
+                            <span>Via WhatsApp</span>
+                        </a>
+                        <a href="tel:+254794156382" class="button is-medium">                        
+                            <span class="icon">
+                                <i class="fas fa-phone"></i>
+                            </span>
+                            <span>+254794156382</span>
+                        </a>
+                        <a href="mailto:tinshotsphotography@gmail.com" class="button is-medium">                        
+                            <span class="icon">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span>Send Email</span>
+                        </a>
+                    </div>
+                    <span>OR Manually</span>
+                    <form method="POST"  class="mt-4" action="{% url 'contact' %}">
                         {% csrf_token %}
                         <div class="field">                    
                             <label class="label">Name</label>

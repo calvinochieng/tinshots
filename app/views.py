@@ -46,6 +46,9 @@ def booking_view(request):
 
     return render(request, 'booking.html', {'form': form})
 
+def pricing(request):
+    return render(request, 'pricing.html')
+
 def terms(request): 
     return render(request, 'terms.html')
 

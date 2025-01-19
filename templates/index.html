@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Edward Martin - Professional Photographer
+Martin Edwards - Professional Photographer
 {% endblock title %}
 
 {% block description %}
-Capturing life's most extraordinary moments through the lens of a passionate photographer.
+Lets Get You A Return Ticket To Moments Otherwise Gone; Capturing life's most extraordinary moments through the lens of a passionate photographer.
 {% endblock description %}
 
 {% block custom_styles %}
@@ -326,7 +326,7 @@ nav.navbar{
                     <div class="is-flex-direction-row is-flex">
                         <div class="is-flex">
                             <a class="is-hidden-touch navbar-item" href="#portforlio">Portfolio</a>
-                            <a class="is-hidden-touch navbar-item" href="#about">About</a>
+                            <a class="is-hidden-touch navbar-item" href="{% url 'pricing' %}">Pricing</a>
                             <a class="is-hidden-touch navbar-item" href="#contact">Contact</a>
                         </div>
                         <div  class="is-flex">                            
@@ -340,9 +340,9 @@ nav.navbar{
                 <p class="greeting is-link">Welcome To</p>
                 <h1>Tinshots Photography</h1>
                 <p class="subtitle">
-                    Tinshots Photography is  modern solution to your picture civerage problems, we offer the best in terms of service delivery and high quality as well.
+                    Tinshots Photography is  modern solution to your picture coverage problems, we offer the best in terms of service delivery and high quality.
                     <br>
-                    <strong class="gradient-text">Lets Get You A Return Ticket To Moments Otherwise Gone</strong>
+                    <span class="has-text-weight-bold">Lets Get You A Return Ticket To Moments Otherwise Gone</span>
                 </p>
                 <div class="button-group">
                     <a href="#bookings" class="button is-danger is-large">Book Now</a>
@@ -406,10 +406,14 @@ nav.navbar{
 
 
         <!-- Load More Button -->
-        <div class="has-text-centered mt-5">
-            <a href="{% url 'gallery' %}">
-                <button class="button is-link is-large" >View Entire Gallery</button>
-            </a>
+        <div class="mt-5 ">
+            
+            <div class="button-group">
+                <a href="{% url 'gallery' %}">
+                    <button class="button is-link is-large" >View Entire Gallery</button>
+                </a>
+                <a href="{% url 'pricing' %}" class="button is-danger is-large">View Rates</a>
+            </div>
         </div>
     </div>
 </section>
@@ -504,7 +508,7 @@ nav.navbar{
                             <span class="icon">
                                 <i class="fas fa-phone"></i>
                             </span>
-                            <span>Book Via Call</span>
+                            <span>Call +254794156382</span>
                         </a>
                         <a href="mailto:tinshotsphotography@gmail.com" class="button is-medium">                        
                             <span class="icon">
@@ -513,7 +517,9 @@ nav.navbar{
                             <span>Book Via Email</span>
                         </a>
                     </div>
-                    <span>OR Manually</span>
+                    <div class="divider-container ">
+                        <span>OR Manually</span>
+                    </div>
                     <form method="POST"  class="mt-4" action="{% url 'bookings' %}">
                         {% csrf_token %}
                         <div class="field">
@@ -611,7 +617,7 @@ nav.navbar{
                 <span class="faq-icon">+</span>
             </h4>
             <p class="faq-answer" style="display: none;">
-                The cost of a photoshoot depends on the type of session and location. Studio sessions and private events at your home or chosen venue may vary in price. Feel free to contact me for a personalized quote based on your unique needs and preferences.
+                The cost of a photoshoot depends on the type of session and location. Studio sessions and private events at your home or chosen venue may vary in price. Feel free to contact me for a personalized quote based on your unique needs and preferences. The rate and pricing are detialed on the pricing page
             </p>
         </div>
         
@@ -723,7 +729,8 @@ nav.navbar{
                             <span>Send Email</span>
                         </a>
                     </div>
-                    <span>OR Manually</span>
+                    <div  class="divider-container has-background-black"><span class="has-background-black has-text-white">OR Manually</span></div>
+                        
                     <form method="POST"  class="mt-4" action="{% url 'contact' %}">
                         {% csrf_token %}
                         <div class="field">                    

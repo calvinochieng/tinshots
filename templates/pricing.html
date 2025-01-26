@@ -13,11 +13,53 @@ Rates and Pricing
 
     <style>
         .hero {
-            background: linear-gradient(45deg, #3273dc, #f14668);
-            color: white;
-            padding: 2rem;
+            background: black;
             text-align: center;
+            justify-content: center !important;
+            position: relative;
+            /* height: 100vh; */
         }
+        .carousel{
+
+            position: absolute;
+            width: 100%;
+            left: 0;
+            right: 0;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            z-index: 0;
+            overflow: hidden;
+
+        }
+        .carousel>img{
+            height: 100% !important;
+            width: auto;
+            max-width: none !important;
+        }
+        .cta-container{
+
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            bottom: 0;
+            top: 0;
+            left: 0;
+            right:0 ;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: #0000005c;
+            padding: 1rem;
+            color: white !important;
+
+        }
+        .cta-container  *{ 
+            color: white !important; 
+            max-width: 700px;}
+        .button-outline{ background: #3273dcd6;}
 
         .pricing-section {
             margin: 2rem 0;
@@ -63,22 +105,81 @@ Rates and Pricing
             width: 70%;
         }
         .pricing-card a.button{ border-radius: 2px !important; width: 100%;}
+        @media screen and (max-width: 1024px) {
+            .container {
+                width: 100%;
+            }
+        }
     </style>
  
     
-
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
+ <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js" defer></script>
+ <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new Splide('#image-carousel', {
+            type: 'loop', // Loop through slides
+            perPage: 3, // Only one slide visible at a time
+            focus: 'center', // Center the active slide
+            autoplay: true, // Enable autoplay
+            interval: 3000, // Time between transitions in ms
+            breakpoints: {
+                768: {
+                    perPage: 1, // Adjust for smaller screens
+                },
+            },
+        }).mount();
+    });
+</script>
+ 
 {% endblock custom_styles %}
 
 {% block content %}
 {% load static %}
 <section class="hero">
-    <h1 class="title">Tinshots Photography Rates & Pricing</h1>
-    <p class="subtitle">Capturing Your Best Moments at Affordable Rates</p>
+    <div id="image-carousel" class="splide">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide">
+                    <img src="https://res.cloudinary.com/awwzcdn/image/upload/v1/media/portfolio/images/portrait_1_bhojah" alt="" class="item">
+                </li>
+                <li class="splide__slide">
+                    <img src="https://res.cloudinary.com/awwzcdn/image/upload/v1/media/portfolio/images/portrait__0_ng06g0" alt="" class="item">
+                </li>
+                <li class="splide__slide">
+                    <img src="https://res.cloudinary.com/awwzcdn/image/upload/v1/media/portfolio/images/portrait_2_wo2k4n" alt="" class="item">
+                </li>
+                <li class="splide__slide">
+                    <img src="https://res.cloudinary.com/awwzcdn/image/upload/v1/media/portfolio/images/outdoor3_fcompk" alt="" class="item">
+                </li>
+                <li class="splide__slide">
+                    <img src="https://res.cloudinary.com/awwzcdn/image/upload/v1/media/portfolio/images/outdoor1_krukot" alt="" class="item">
+                </li>
+                <li class="splide__slide">
+                    <img src="https://res.cloudinary.com/awwzcdn/image/upload/v1/media/portfolio/images/nyombo_10_vgzweu" alt="" class="item">
+                </li>
+                <li class="splide__slide">
+                    <img src="https://res.cloudinary.com/awwzcdn/image/upload/v1/media/portfolio/images/kids0_zh94fi" alt="" class="item">
+                </li>
+                <li class="splide__slide">
+                    <img src="https://res.cloudinary.com/awwzcdn/image/upload/v1/media/portfolio/images/kids1_gbdgqr" alt="" class="item">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="cta-container">
+        <h1 class="title">Tinshots Photography Rates & Pricing</h1>
+        <p class="subtitle">Capturing Your Best Moments at Affordable Rates</p>
+        <div><a href="#pricing" class="button button-outline is-large">View Rates</a></div>
+    </div>
 </section>
 
-<section class="section pricing-section">
+<section class="section pricing-section" id="pricing">
     <div class="container">
         <h2 class="title has-text-centered">Personal Shoot Packages</h2>
+        <p class="subtitle has-text-centered my-4">
+            Portraits/ Outdoors/ Kids/ Graduations
+        </p>
         <div class="columns is-multiline">
             <div class="column is-one-third">
                 <div class="pricing-card">
@@ -87,7 +188,7 @@ Rates and Pricing
                     <p class="extra-details">10 Photos 
                         <br>10 Edited Photos Delivered
                         <br>Quick snap and go</p>
-                        <a href="" class="button mt-4 is-link">Book Now</a>
+                        <a href="https://wa.me/c/254794156382" class="button mt-4 is-link">Book Now</a>
                 </div>
             </div>
             <div class="column is-one-third">
@@ -99,7 +200,7 @@ Rates and Pricing
                         23 Photos 
                         <br>23 Edited Photos Delivered
                         <br>Quick snap and go</p>
-                    <a href="" class="button mt-4 is-danger">Book Now</a>
+                    <a href="https://wa.me/c/254794156382" class="button mt-4 is-danger">Book Now</a>
                 </div>
             </div>
             <div class="column is-one-third">
@@ -111,7 +212,7 @@ Rates and Pricing
                         <br>50 Edited Photos Max 
                         <br>1 hour session</p>
 
-                        <a href="" class="button mt-4 is-link">Book Now</a>
+                        <a href="https://wa.me/c/254794156382" class="button mt-4 is-link">Book Now</a>
                 </div>
             </div>
         </div>
@@ -122,6 +223,7 @@ Rates and Pricing
 <section class="section pricing-section">
     <div class="container">
         <h2 class="title has-text-centered">Coverage Packages</h2>
+        <p class="subtitle has-text-centered">Nyombo / Koito / Ruracio / Weddings / Events</p>
         <div class="columns is-multiline">
             <div class="column is-one-third">
                 <div class="pricing-card">
@@ -133,7 +235,7 @@ Rates and Pricing
                         <br>2 Photo Cameras
                     </p>
 
-                    <a href="" class="button mt-4 is-link">Book Now</a>
+                    <a href="https://wa.me/c/254794156382" class="button mt-4 is-link">Book Now</a>
                 </div>
             </div>
             <div class="column is-one-third">
@@ -147,7 +249,7 @@ Rates and Pricing
                         <br>1 for Videography
                     </p>
 
-                    <a href="" class="button mt-4 is-danger">Book Now</a>
+                    <a href="https://wa.me/c/254794156382" class="button mt-4 is-danger">Book Now</a>
                 </div>
             </div>
             <div class="column is-one-third">
@@ -162,11 +264,14 @@ Rates and Pricing
                     </p>
 
 
-                    <a href="" class="button mt-4 is-link">Book Now</a>
+                    <a href="https://wa.me/c/254794156382" class="button mt-4 is-link">Book Now</a>
                 </div>
             </div>
         </div>
-        <p class="note">* Drone Coverage: 20,000 Ksh (not included in booking)<br>Extra Camera: 15,000 Ksh</p>
+        <p class="note">
+            * Drone Coverage: 20,000 Ksh (not included in booking)
+            <br>* Extra Camera: 15,000 Ksh
+        </p>
     </div>
 </section>
 

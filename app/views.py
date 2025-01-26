@@ -10,6 +10,11 @@ def index(request):
     form = BookingForm() 
     contact_form = ContactForm()
     return render(request, 'index.html', {'portfolios': portfolios, 'form': form, 'contact_form': contact_form})
+def home(request):
+    portfolios = Portfolio.objects.all().order_by('order')
+    form = BookingForm() 
+    contact_form = ContactForm()
+    return render(request, 'home.html', {'portfolios': portfolios, 'form': form, 'contact_form': contact_form})
 
 def portfolio(request,pkid=None):   
     items = PortfolioImage.objects.all()

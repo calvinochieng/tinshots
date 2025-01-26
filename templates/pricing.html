@@ -1,1 +1,199 @@
-<h1>See Our Rates</h1>
+{% extends 'base.html' %}
+
+{% block title %}
+Rates and Pricing
+{% endblock title %}
+
+{% block description %}
+    These are the rate and pricing for services we provide
+{% endblock description %}
+
+{% block custom_styles %}
+
+
+    <style>
+        .hero {
+            background: linear-gradient(45deg, #3273dc, #f14668);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .pricing-section {
+            margin: 2rem 0;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 2px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #3273dc;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .note {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .additional-services, .delivery-info {
+            margin-top: 2rem;
+        }
+
+        .extra-details {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .container{
+            width: 70%;
+        }
+        .pricing-card a.button{ border-radius: 2px !important; width: 100%;}
+    </style>
+ 
+    
+
+{% endblock custom_styles %}
+
+{% block content %}
+{% load static %}
+<section class="hero">
+    <h1 class="title">Tinshots Photography Rates & Pricing</h1>
+    <p class="subtitle">Capturing Your Best Moments at Affordable Rates</p>
+</section>
+
+<section class="section pricing-section">
+    <div class="container">
+        <h2 class="title has-text-centered">Personal Shoot Packages</h2>
+        <div class="columns is-multiline">
+            <div class="column is-one-third">
+                <div class="pricing-card">
+                    <h3 class="card-header-title">Mini</h3>
+                    <p class="price">1,500 Ksh</p>
+                    <p class="extra-details">10 Photos 
+                        <br>10 Edited Photos Delivered
+                        <br>Quick snap and go</p>
+                        <a href="" class="button mt-4 is-link">Book Now</a>
+                </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="pricing-card" style="border:1px solid #f1466845;">
+                    <h3 class="card-header-title">Pro</h3>
+                    <p class="price">3,000 Ksh</p>
+
+                    <p class="extra-details">
+                        23 Photos 
+                        <br>23 Edited Photos Delivered
+                        <br>Quick snap and go</p>
+                    <a href="" class="button mt-4 is-danger">Book Now</a>
+                </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="pricing-card">
+                    <h3 class="card-header-title">Unlimited</h3>
+                    <p class="price">2,500 Ksh</p>
+
+                    <p class="extra-details">Unlimited Photos
+                        <br>50 Edited Photos Max 
+                        <br>1 hour session</p>
+
+                        <a href="" class="button mt-4 is-link">Book Now</a>
+                </div>
+            </div>
+        </div>
+        <p class="note">* Extra pic outside booking: 200 Ksh</p>
+    </div>
+</section>
+
+<section class="section pricing-section">
+    <div class="container">
+        <h2 class="title has-text-centered">Coverage Packages</h2>
+        <div class="columns is-multiline">
+            <div class="column is-one-third">
+                <div class="pricing-card">
+                    <h3 class="card-header-title">Bronze</h3>
+                    <p class="price">35,000 Ksh</p>
+                    <p class="extra-details">1 Day Coverage
+                        <br>Unlimited Photos
+                        <br>2 Photographers
+                        <br>2 Photo Cameras
+                    </p>
+
+                    <a href="" class="button mt-4 is-link">Book Now</a>
+                </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="pricing-card">
+                    <h3 class="card-header-title">Silver</h3>
+                    <p class="price">50,000 Ksh</p>
+                    <p class="extra-details">1 Day Coverage
+                        <br>Unlimited Photos
+                        <br>3 Photographers ( 3 Cameras)
+                        <br>2 Photo Cameras
+                        <br>1 for Videography
+                    </p>
+
+                    <a href="" class="button mt-4 is-danger">Book Now</a>
+                </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="pricing-card">
+                    <h3 class="card-header-title">Gold</h3>
+                    <p class="price">75,000 Ksh</p>
+                    <p class="extra-details">1 Day Coverage
+                        <br>Unlimited Photos
+                        <br>4 Photographers (4 Cameras)
+                        <br>2 Photo Cameras
+                        <br>2 for Videography
+                    </p>
+
+
+                    <a href="" class="button mt-4 is-link">Book Now</a>
+                </div>
+            </div>
+        </div>
+        <p class="note">* Drone Coverage: 20,000 Ksh (not included in booking)<br>Extra Camera: 15,000 Ksh</p>
+    </div>
+</section>
+
+<section class="section delivery-info">
+    <div class="container">
+        <h2 class="title has-text-centered">Delivery Info</h2>
+        <p class="has-text-centered">Photos delivered after 4 days, videos delivered after 15 days</p>
+        <p class="has-text-centered">Transport and accommodation covered by the client</p>
+    </div>
+</section>
+
+<section class="section additional-services">
+    <div class="container">
+        <h2 class="title has-text-centered">Additional Services</h2>
+        <div class="columns is-centered">
+            <div class="column is-one-third">
+                <div class="pricing-card">
+                    <h3 class="card-header-title">Makeup Services</h3>
+                    <p class="price">1,500 Ksh</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block script %}
+<!-- Add any JavaScript here if needed -->
+{% endblock script %}

@@ -30,6 +30,7 @@ class Portfolio(models.Model):
     slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)  # Slug for URLs
     description = models.TextField(blank=True, null=True)  # Optional description
     cover_image = models.ImageField(upload_to='portfolio/covers/')  # Cover image for the portfolio
+    order = models.IntegerField(blank= True, null= True)
 
     def save(self, *args, **kwargs):
         # Automatically generate slug from title if not provided

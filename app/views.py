@@ -6,7 +6,7 @@ from .models import *
 from .forms import *
 
 def index(request): 
-    portfolios = Portfolio.objects.all()
+    portfolios = Portfolio.objects.all().order_by('order')
     form = BookingForm() 
     contact_form = ContactForm()
     return render(request, 'index.html', {'portfolios': portfolios, 'form': form, 'contact_form': contact_form})

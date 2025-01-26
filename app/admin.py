@@ -20,7 +20,7 @@ class PortfolioImageInline(admin.TabularInline):  # Or use admin.StackedInline f
 
 @admin.register(Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):
-    list_display = ('title',)  # Fields to display in the admin list view
+    list_display = ('title','id', 'order')  # Fields to display in the admin list view
     inlines = [PortfolioImageInline]  # Add the inline model to the Portfolio admin
     search_fields = ('title',)  # Search bar for the title field
-    ordering = ('title',)  # Order portfolios alphabetically
+    ordering = ('order',)  # Order portfolios alphabetically

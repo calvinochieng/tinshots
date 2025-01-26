@@ -10,6 +10,128 @@ Lets Get You A Return Ticket To Moments Otherwise Gone; Capturing life's most ex
 
 {% block custom_styles %}
 <style>
+nav.hide{
+    display: none;
+}
+nav.navbar{
+    border-radius: 12px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 2rem;
+    background-color: var(--background-color);
+}
+
+/* Hero Section */
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 104px);
+    padding: 2rem;
+    padding-top: 1rem;
+    background-color: var(--background-color);
+    background-image: url(/static/app/images/background.jpg);
+    background-position: center;
+    background-position-y: 29%;
+    background-size: 269%;
+    background-repeat: no-repeat;
+
+    flex-direction: column;
+    position: relative;
+
+}
+
+.hero-content {
+    display: flex;
+    align-items: stretch;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    /* flex-wrap: wrap; */
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 600px;
+}
+.hero-image{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    max-width: 600px;
+    border-radius: 20% 50% 1% 20%;
+    min-height: 200px;
+    position: relative;
+    align-items: center;
+}
+
+.support-images{
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgb(255, 0, 140);
+    margin: auto;
+    z-index: 100;
+    box-shadow: 0px 0px 48px -17px rgb(255 255 255 / 69%);
+    transition: all .5s ease-in-out;
+}
+.support-images:hover{
+    transform: scale(1.09);
+    cursor: pointer;
+}
+.hero-text .greeting {
+    font-size: 1.125rem;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--secondary-color);
+    margin-bottom: 1.25rem;
+    line-height: 1.2;
+}
+.gradient-text {
+            font-weight: bold;
+            background: linear-gradient(90deg, #3273dc, #f14668);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+.hero-text .subtitle {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.hero-image-wrapper {
+    position: relative;
+    max-width: 450px;
+    width: 100%;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-image-wrapper:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.hero-image-wrapper img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+
 /* Column design  */
 .work-item {
     position: relative;
@@ -186,174 +308,73 @@ Lets Get You A Return Ticket To Moments Otherwise Gone; Capturing life's most ex
 </script>
 
 
-<style>
-    .hero {
-        background: black;
-        text-align: center;
-        justify-content: center !important;
-        position: relative;
-        /* height: 100vh; */
-    }
-    .carousel{
-
-        position: absolute;
-        width: 100%;
-        left: 0;
-        right: 0;
-        height: 100%;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        z-index: 0;
-        overflow: hidden;
-
-    }
-    .carousel>img{
-        height: 100% !important;
-        width: auto;
-        max-width: none !important;
-    }
-    .cta-container{
-
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        bottom: 0;
-        top: 0;
-        left: 0;
-        right:0 ;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        background: #0000005c;
-        padding: 1rem;
-        color: white !important;
-
-    }
-    .cta-container  *{ 
-        color: white !important; 
-        max-width: 700px;}
-    .button-outline{ background: #3273dcd6;}
-
-    .pricing-section {
-        margin: 2rem 0;
-    }
-
-    .pricing-card {
-        background: white;
-        border-radius: 2px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        padding: 1.5rem;
-        transition: transform 0.2s ease-in-out;
-    }
-
-    .pricing-card:hover {
-        transform: translateY(-5px);
-    }
-
-    .card-header-title {
-        font-size: 1.25rem;
-        font-weight: bold;
-        color: #3273dc;
-    }
-
-    .price {
-        font-size: 1.5rem;
-        margin: 1rem 0;
-    }
-
-    .note {
-        font-size: 0.9rem;
-        color: #666;
-    }
-
-    .additional-services, .delivery-info {
-        margin-top: 2rem;
-    }
-
-    .extra-details {
-        font-size: 0.9rem;
-        color: #555;
-    }
-    .container{
-        width: 70%;
-    }
-    .pricing-card a.button{ border-radius: 2px !important; width: 100%;}
-    @media screen and (max-width: 1024px) {
-        .container {
-            width: 100%;
-        }
-    }
-</style>
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
-<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    new Splide('#image-carousel', {
-        type: 'loop', // Loop through slides
-        perPage: 3, // Only one slide visible at a time
-        focus: 'center', // Center the active slide
-        autoplay: true, // Enable autoplay
-        interval: 3000, // Time between transitions in ms
-        breakpoints: {
-            768: {
-                perPage: 1, // Adjust for smaller screens
-            },
-        },
-    }).mount();
-});
-</script>
-
 {% endblock custom_styles %}
 
 {% block content %}
 {% load static %}
-<section class="hero">
-<div id="image-carousel" class="splide">
-    <div class="splide__track">
-        <ul class="splide__list">
-            <li class="splide__slide">
-                <img src="https://res.cloudinary.com/awwzcdn/image/upload/v1/media/portfolio/images/portrait_1_bhojah" alt="" class="item">
-            </li>
-            <li class="splide__slide">
-                <img src="https://res.cloudinary.com/awwzcdn/image/upload/v1/media/portfolio/images/portrait__0_ng06g0" alt="" class="item">
-            </li>
-            <li class="splide__slide">
-                <img src="https://res.cloudinary.com/awwzcdn/image/upload/v1/media/portfolio/images/portrait_2_wo2k4n" alt="" class="item">
-            </li>
-            <li class="splide__slide">
-                <img src="https://res.cloudinary.com/awwzcdn/image/upload/v1/media/portfolio/images/outdoor3_fcompk" alt="" class="item">
-            </li>
-            <li class="splide__slide">
-                <img src="https://res.cloudinary.com/awwzcdn/image/upload/v1/media/portfolio/images/outdoor1_krukot" alt="" class="item">
-            </li>
-            <li class="splide__slide">
-                <img src="https://res.cloudinary.com/awwzcdn/image/upload/v1/media/portfolio/images/nyombo_10_vgzweu" alt="" class="item">
-            </li>
-            <li class="splide__slide">
-                <img src="https://res.cloudinary.com/awwzcdn/image/upload/v1/media/portfolio/images/kids0_zh94fi" alt="" class="item">
-            </li>
-            <li class="splide__slide">
-                <img src="https://res.cloudinary.com/awwzcdn/image/upload/v1/media/portfolio/images/kids1_gbdgqr" alt="" class="item">
-            </li>
-        </ul>
+
+<section class="hero-container">
+    <div class="hero-content">
+        <!-- Text Content -->
+        <div class="hero-text">
+
+            <nav class="navbar">
+                <div class="navbar-brand is-flex is-justify-content-space-between">
+                    <a href="/" class="navbar-item">
+                        <img class="logo" src="{% static 'app/images/icons/logo-white.png' %}" alt="Logo">
+                    </a>
+                    <div class="is-flex-direction-row is-flex">
+                        <div class="is-flex">
+                            <a class="is-hidden-touch navbar-item" href="#portforlio">Portfolio</a>
+                            <a class="is-hidden-touch navbar-item" href="{% url 'pricing' %}">Pricing</a>
+                            <a class="is-hidden-touch navbar-item" href="#contact">Contact</a>
+                        </div>
+                        <div  class="is-flex">                            
+                            <a href="https://www.instagram.com/tin_shots_photography/profilecard/?igsh=emV5YjhodHgzeTQ0" class="navbar-item"><span class="icon is-medium"><i class=" has-text-link fab fa-instagram"></i></span></a>
+                            <a href="https://www.facebook.com/profile.php?id=61550788930385&mibextid=ZbWKwL" class="navbar-item"><span class="icon is-medium"><i class=" has-text-link fab fa-facebook"></i></span></a> 
+                        </div>                
+                    </div> 
+                </div>
+            </nav>
+            <div class="is-flex is-align-item-center is-flex-direction-column">                
+                <p class="greeting is-link">Welcome To</p>
+                <h1>Tinshots Photography</h1>
+                <p class="subtitle">
+                    Tinshots Photography is  modern solution to your picture coverage problems, we offer the best in terms of service delivery and high quality.
+                    <br>
+                    <span class="has-text-weight-bold pt-4">Lets Get You A Return Ticket To Moments Otherwise Gone</span>
+                </p>
+                <div class="button-group">
+                    <a href="#bookings" class="button is-danger is-large">Book Now</a>
+                    <a href="https://wa.me/c/254794156382" class="button button-outline is-large">View Catalogue</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Content -->
+        <div class="hero-image">
+            <a href="#portforlio">
+                <img src="{% static 'app/images/1.jpg' %}" alt="Tinshot Photography Portrait Photography" 
+                class="support-images"
+                style="width: 28%;right: 72%;">
+            </a>
+            <div class="hero-image-wrapper" style="position: relative;">
+                <img src="{% static 'app/images/icons/photographer1.jpg' %}" alt="Edward Martin's portrait" loading="lazy">
+            </div>
+            <a href="#portforlio">
+                <img src="{% static 'app/images/2.jpg' %}" alt="Tinshot Photography Portrait Photography" 
+                class="support-images"
+                style="width: 28%;left: 72%;">
+            </a>
+            
+            <a href="#portforlio" style="position: absolute; bottom: 3%; width: 35%;">
+                <img
+                 src="{% static 'app/images/3.jpg' %}" alt="Tinshot Photography Portrait Photography"
+                class="support-images" 
+                style="position: relative; box-shadow: 0px 0px 48px 8px rgb(0 0 0 / 69%);">
+            </a>
+        </div>
     </div>
-</div>
-<div class="cta-container">
-    <p class="greeting is-link">Welcome To</p>
-    <h1 class="title">Tinshots Photography</h1>
-    <p class="subtitle mt-o">
-        Tinshots Photography is  modern solution to your picture coverage problems, 
-        <span class="has-text-weight-bold pt-4">Lets Get You A Return Ticket To Moments Otherwise Gone</span>
-    </p>
-    <div class="button-group">
-        <a href="#bookings" class="button is-danger is-large">Book Now</a>
-        <a href="https://wa.me/c/254794156382" class="button button-outline is-large">View Catalogue</a>
-    </div>
-</div>
 </section>
 
 <section class="section has-background-white" id="portforlio">
@@ -785,3 +806,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     
 {% endblock custom_scripts %}
+
+
+
+
+
+
+
+
+

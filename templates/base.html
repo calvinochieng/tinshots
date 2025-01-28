@@ -5,12 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="TinShots">
 
+    
+    <!-- Page Title -->
     <title>
-        TinShots Photography - {% block title %} {% endblock title %}
-    </title>     
+        {% block title %}{% endblock title %} TinShots Photography
+    </title>
 
-    <meta name="description" content="{% block description %}{% endblock description %}">       
+    <!-- Meta Description -->
+    <meta name="description" content="{% block description %}{% endblock description %}">
+
+    <!-- Favicon -->
     <link rel="shortcut icon" href="{% static 'app/images/icons/favicon.png' %}" type="image/x-icon">
+
+    <!-- Open Graph Meta Tags for Facebook and Google -->
+    <meta property="og:url" content="https://tinshotsphotography.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TinShots Photography">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@tinshotsphotography"> <!-- Replace with your Twitter handle -->
+
+
+    
+    {% block meta %} {% endblock meta %}
+        
+    <!-- Robots -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://tinshotsphotography.com/">
+
 
     <!-- Font and Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
@@ -38,6 +63,11 @@
             z-index: 100;
             position: absolute;
         }
+        /* For carousel */
+        #image-carousel{
+            min-height: 550px;
+        }
+        /* end */
         .notification{
             max-width: 600px;
             margin: 0 auto;

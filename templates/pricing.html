@@ -1,12 +1,27 @@
 {% extends 'base.html' %}
+{% load  static %}
 
 {% block title %}
-Rates and Pricing
+Rates and Pricing | 
 {% endblock title %}
 
 {% block description %}
     These are the rate and pricing for services we provide
 {% endblock description %}
+
+
+
+{% block meta %}
+
+    <meta property="og:title" content=" Rates and Pricing | TinShots Photography">
+    <meta property="og:description" content="These are the rate and pricing for services we provide">
+    <meta property="og:image" content="{% static 'app/images/icons/pricing.png' %}">
+    
+    <meta name="twitter:title" content=" Rates and Pricing | TinShots Photography">
+    <meta name="twitter:description" content=" These are the rate and pricing for services we provide ">
+    <meta name="twitter:image" content="{% static 'app/images/icons/pricing.png' %}">
+    
+{% endblock meta %}
 
 {% block custom_styles %}
 

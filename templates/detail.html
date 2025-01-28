@@ -1,12 +1,27 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    {{ item.name }}
+    {{ portfolio.title }} |
 {% endblock title %}
 
 {% block description %}
-    {{ item.description }}
+{{portfolio.description}}
 {% endblock description %}
+
+
+
+{% block meta %}
+
+    <meta property="og:title" content=" {{ portfolio.title }} | TinShots Photography">
+    <meta property="og:description" content=" {{ portfolio.description }}">
+    <meta property="og:image" content="{{ portfolio.cover_image.url }}">
+    
+    <meta name="twitter:title" content="{{ portfolio.title }} | TinShots Photography">
+    <meta name="twitter:description" content=" {{ portfolio.description }} ">
+    <meta name="twitter:image" content="{{ portfolio.cover_image.url }}">
+    
+{% endblock meta %}
+
 
 {% block custom_styles %}
     <style>

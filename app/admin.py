@@ -1,6 +1,9 @@
 from django.contrib import admin
 from .models import Portfolio, PortfolioImage, ContactMessage, Booking
 
+admin.site.site_header = "TinShots Photography Admin"
+admin.site.site_title = "TinShots Admin"
+admin.site.index_title = "Welcome to the TinShots Dashboard"
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):

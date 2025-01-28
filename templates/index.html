@@ -1,13 +1,26 @@
 
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}
-Martin Edwards - Professional Photographer
-{% endblock title %}
+{% block title %}{% endblock title %}
 
 {% block description %}
 Lets Get You A Return Ticket To Moments Otherwise Gone; Capturing life's most extraordinary moments through the lens of a passionate photographer.
 {% endblock description %}
+
+
+{% block meta %}
+
+    <meta property="og:title" content=" TinShots Photography">
+    <meta property="og:description" content="Lets Get You A Return Ticket To Moments Otherwise Gone; Capturing life's most extraordinary moments through the lens of a passionate photographer.">
+    <meta property="og:image" content="{% static 'app/images/icons/base.jpg' %}">
+    
+    <meta name="twitter:title" content=" TinShots Photography">
+    <meta name="twitter:description" content=" Lets Get You A Return Ticket To Moments Otherwise Gone; Capturing life's most extraordinary moments through the lens of a passionate photographer.">
+    <meta name="twitter:image" content="{% static 'app/images/icons/base.jpg' %}">
+    
+{% endblock meta %}
+    
 
 {% block custom_styles %}
 <style>

@@ -2,12 +2,24 @@
 {% load static %}
 
 {% block title %}
-    Gallery
+    Booking | 
 {% endblock title %}
 
 {% block description %}
     Please make abooking here
 {% endblock description %}
+
+{% block meta %}
+
+    <meta property="og:title" content=" Booking | TinShots Photography">
+    <meta property="og:description" content="Please make abooking here">
+    <meta property="og:image" content="{% static 'app/images/icons/booking.jpg' %}">
+    
+    <meta name="twitter:title" content=" Booking | TinShots Photography">
+    <meta name="twitter:description" content="Please make abooking here ">
+    <meta name="twitter:image" content="{% static 'app/images/icons/booking.jpg' %}">
+    
+{% endblock meta %}
 
 {% block custom_styles %}
 <style>

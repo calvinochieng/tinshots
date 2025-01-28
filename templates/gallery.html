@@ -2,12 +2,24 @@
 {% load static %}
 
 {% block title %}
-    Gallery
+    Gallery |
 {% endblock title %}
 
 {% block description %}
     Here is the collection of my work -  please enjoy
 {% endblock description %}
+
+{% block meta %}
+
+    <meta property="og:title" content=" Gallery | TinShots Photography">
+    <meta property="og:description" content="Here is the collection of my work -  please enjoy">
+    <meta property="og:image" content="{% static 'app/images/icons/base.jpg' %}">
+    
+    <meta name="twitter:title" content=" Gallery | TinShots Photography">
+    <meta name="twitter:description" content=" Here is the collection of my work -  please enjoy ">
+    <meta name="twitter:image" content="{% static 'app/images/icons/base.jpg' %}">
+    
+{% endblock meta %}
 
 {% block custom_styles %}
 <style>
@@ -22,7 +34,7 @@
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 4px;
+    border-radius: 2px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
